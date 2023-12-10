@@ -92,15 +92,17 @@ class PeripheralManager: NSObject, ObservableObject, CBPeripheralManagerDelegate
         self.peripheralManager?.stopAdvertising()
     }
 
-    func notify(){
-        peripheralManagerState = "Start Notify"
-        let notifyData = Data( [0xAA])
-                peripheralManager?.updateValue(notifyData, for: notifyCharacteristic!, onSubscribedCentrals: nil)
-    }
+
     func indicate(){
         peripheralManagerState = "Start indicate"
-        let indicateData = Data( [0xBB])
-        peripheralManager?.updateValue(indicateData, for: indicateCharacteristic!, onSubscribedCentrals: nil)
+        let indicateData = Data([0xBB])
+        self.peripheralManager?.updateValue(indicateData, for: indicateCharacteristic!, onSubscribedCentrals: nil)
+
+    }
+    func notify(){
+        peripheralManagerState = "Start notify"
+        let notifyData = Data( [0xAA])
+        peripheralManager?.updateValue(notifyData, for: notifyCharacteristic!, onSubscribedCentrals: nil)
 
     }
 }

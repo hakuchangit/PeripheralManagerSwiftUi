@@ -9,6 +9,10 @@ import SwiftUI
 import CoreBluetooth
 
 
+
+
+
+
 struct ContentView: View {
     @State var advertiseIsOn: Bool = false
     @ObservedObject var peripheralManager = PeripheralManager()
@@ -44,6 +48,7 @@ struct ContentView: View {
             .padding(.all)
             .background(Color.blue)
 
+
             Button(action: indicate) {
                 Text("Indicate")
                     .font(.largeTitle)
@@ -55,7 +60,7 @@ struct ContentView: View {
 
             Text("PeripheralManagerStates")
                        .font(.title)
-                       .padding(20)
+                       .padding(10)
 
             Text("\(peripheralManager.peripheralManagerState)")
 
@@ -76,6 +81,7 @@ struct ContentView: View {
     private func notify(){
         self.peripheralManager.notify()
     }
+
 
     private func indicate(){
         self.peripheralManager.indicate()
